@@ -28,6 +28,7 @@
         <header-file src="lib/ios/ACTReporter.h"/>
         <source-file src="src/ios/GoogleConversionTracking.m"/>
         <source-file src="lib/ios/libGoogleConversionTracking.a" framework="true"/>
+        <framework src="AdSupport.framework" />
     </platform>
 
     <platform name="android">
