@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="com.imagitas.plugins.GoogleConversionTracking"
+        version="0.0.1">
+
+    <name>GoogleConversionTracking</name>
+    <description>Cordova Plugin for Google App Install Conversion Tracking</description>
+    <license>Apache 2.0</license>
+
+    <engines>
+        <engine name="cordova" version=">=3.4.0"/>
+    </engines>
+
+    <js-module src="www/gct.js" name="GoogleConversionTracking">
+        <clobbers target="GoogleConversionTracking"/>
+    </js-module>
+
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="GoogleConversionTracking">
+                <param name="ios-package" value="GoogleConversionTracking"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/GoogleConversionTracking.h"/>
+        <header-file src="lib/ios/ACTReporter.h"/>
+        <source-file src="src/ios/GoogleConversionTracking.m"/>
+        <source-file src="lib/ios/libGoogleConversionTracking.a" framework="true"/>
+    </platform>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="GoogleConversionTracking">
+                <param name="android-package" value="com.imagitas.plugins.GoogleConversionTracking"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <receiver android:name="com.google.ads.conversiontracking.InstallReceiver"
+                      android:exported="true">
+                <intent-filter>
+                    <action android:name="com.android.vending.INSTALL_REFERRER"/>
+                </intent-filter>
+            </receiver>
+        </config-file>
+
+        <source-file src="src/android/GoogleConversionTracking.java" target-dir="src/com/imagitas/plugins"/>
+        <source-file src="lib/android/GoogleConversionTrackingSdk-2.2.3.jar" target-dir="libs"/>
+    </platform>
+
+</plugin>
+
