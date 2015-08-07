@@ -1,10 +1,17 @@
+var GoogleConversionTracking = (function () {
+    var GoogleConversionTracking = (typeof exports !== 'undefined') && exports || {};
 
-/* global module, require */
+    GoogleConversionTracking.doNothing = function () {
+    };
 
-var exec = require('cordova/exec');
+    var PLUGIN_NAME = "GoogleConversionTracking";
 
-module.exports = {
-  track: function(conversionId, label, value, repeatable, success, fail) {
-    exec(success, fail, 'GoogleConversionTracking', 'track', [conversionId, label, value, repeatable]);
-  }
-};
+    GoogleConversionTracking.track = function (conversionId, label, value, repeatable, success, fail) {
+        exec(success, fail, 'GoogleConversionTracking', 'track', [conversionId, label, value, repeatable]);
+    };
+
+
+    return GoogleConversionTracking;
+}());
+
+module.exports = GoogleConversionTracking;
