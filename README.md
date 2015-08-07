@@ -1,12 +1,11 @@
-# GoogleConversionTracking Plugin
+# google-conversion-tracking Plugin
 
 Google App Install Conversion tracking plugin for iOS and Android. Phonegap and Cordova integration for Adwords Conversion tracking.
 
 
 ## Preparation:
 
-This plugin integrates with your AdMob account and AdWords campaigns.  See Google docs for more details.
-See https://developers.google.com/app-conversion-tracking/.d to make sure the AdSupport.framework is linked in xcode for the iOS app.
+This plugin integrates with your AdWords campaigns.  See Google docs for more details.
 
 ## Usage
 
